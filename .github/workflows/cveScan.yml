@@ -37,6 +37,7 @@ jobs:
       - name: prepareResult
         run: |
           kubectl get deployment --all-namespaces
+          kubectl get ks-console -n kubesphere-system
           cat cve.json
 
       #- name: use this action to generate suggestion for deployment settings
