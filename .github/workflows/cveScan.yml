@@ -37,9 +37,18 @@ jobs:
       - name: prepareResult
         run: |
           kubectl get deployment --all-namespaces
-          kubectl get deployment ks-console -n kubesphere-system > deployment.yaml
+          kubectl describe deployment ks-console -n kubesphere-system > deployment.yaml
           cat cve.json
           cat deployment.yaml
+
+      - name: Upload Artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: |
+            cve.json
+            deployment.yaml
 
       #- name: use this action to generate suggestion for deployment settings
       #  id: Lint_with_LLM
