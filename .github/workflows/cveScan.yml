@@ -37,8 +37,7 @@ jobs:
       - name: prepareResult
         run: |
           kubectl get deployment --all-namespaces
-          kubectl describe deployment ks-console -n kubesphere-system > deployment.yaml
-          cat cve.json
+          kubectl get deployment ks-console -n kubesphere-system -o yaml > deployment.yaml
           cat deployment.yaml
 
       - name: Upload Artifact
