@@ -32,12 +32,12 @@ jobs:
 
       - name: dry run helm to get info
         run: |
-          helm upgrade --install -n kubesphere-system --create-namespace ks-core https://charts.kubesphere.io/main/ks-core-1.1.3.tgz --debug --wait --dry-run > deployment.yml
+          helm upgrade --install -n kubesphere-system --create-namespace ks-core https://charts.kubesphere.io/main/ks-core-1.1.3.tgz --debug --wait
 
       - name: prepareResult
         run: |
+          kubectl get deployment --all-namespaces
           cat cve.json
-          cat deployment.yml
 
       #- name: use this action to generate suggestion for deployment settings
       #  id: Lint_with_LLM
