@@ -37,8 +37,9 @@ jobs:
       - name: prepareResult
         run: |
           kubectl get deployment --all-namespaces
-          kubectl get ks-console -n kubesphere-system
+          kubectl get deployment ks-console -n kubesphere-system > deployment.yaml
           cat cve.json
+          cat deployment.yaml
 
       #- name: use this action to generate suggestion for deployment settings
       #  id: Lint_with_LLM
